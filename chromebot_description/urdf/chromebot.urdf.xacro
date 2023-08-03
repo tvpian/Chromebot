@@ -90,7 +90,7 @@
   </link>
   <joint
     name="fw_right_steering_joint"
-    type="revolute">
+    type="fixed">
     <origin
       xyz="0.2704 -0.15909 0.30734"
       rpy="0 0 0" />
@@ -157,7 +157,7 @@
     <child
       link="fw_right_rotation_link" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
   </joint>
   <link
     name="fw_left_steering_link">
@@ -201,7 +201,7 @@
   </link>
   <joint
     name="fw_left_steering_joint"
-    type="revolute">
+    type="fixed">
     <origin
       xyz="0.2704 0.15909 0.30734"
       rpy="0 0 0" />
@@ -374,7 +374,7 @@
     <child
       link="rw_right_rotation_link" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
   </joint>
   <link
     name="rw_left_steering_link">
@@ -480,7 +480,7 @@
     <child
       link="rw_left_rotation_link" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 0 -1" />
   </joint>
 
   <transmission name="rw_right_motor">
@@ -506,7 +506,7 @@
   </transmission>
 
 
-  <transmission name="fw_left_castor_motor">
+  <!-- <transmission name="fw_left_castor_motor">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fw_left_steering_joint">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -526,9 +526,9 @@
       <mechanicalReduction>1.0</mechanicalReduction>
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </actuator>
-  </transmission>
+  </transmission> -->
 
-<!--   <transmission name="fw_right_motor">
+  <transmission name="fw_right_motor">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fw_right_rotation_joint">
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
@@ -548,7 +548,7 @@
       <mechanicalReduction>1</mechanicalReduction>
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </actuator>
-  </transmission> -->
+  </transmission>
 
 
 
