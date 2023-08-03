@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <arg name="model" default="$(find chromebot_description)/urdf/chromebot.urdf.xacro"/>
+    <arg name="world" default="empty_world"/>
+    <!-- Convert xacro to urdf -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world)" />
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_model"
+        args="-unpause -urdf -param robot_description -model chromebot" 
+        output="screen" respawn="false" />
+        
+</launch>

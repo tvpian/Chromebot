@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="chromebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find chromebot_description)/urdf/chromebot_gazebo.xacro"/>
+  <link name="base_footprint"/>
+  <joint name="dummy_link_to_chassis" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="4.24342510958141E-18 3.37655714259843E-06 0.333311714919108"
+        rpy="0 0 0" />
+      <mass
+        value="61.4800876690998" />
+      <inertia
+        ixx="1.4007681727985"
+        ixy="5.6131840895673E-05"
+        ixz="6.19241170958552E-17"
+        iyy="4.85822757142921"
+        iyz="9.3461041334185E-06"
+        izz="6.09495759469197" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+        filename="package://chromebot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="fw_right_steering_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 -1.94289029309402E-16 -0.0828816343189805"
+        rpy="0 0 0" />
+      <mass
+        value="0.745023850143022" />
+      <inertia
+        ixx="0.00495882055313621"
+        ixy="-1.61504663828365E-18"
+        ixz="-2.30857293480806E-19"
+        iyy="0.00288833591537792"
+        iyz="-1.31555997915518E-17"
+        izz="0.00453110133047277" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+        filename="package://chromebot_description/meshes/fw_right_steering_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+        filename="package://chromebot_description/meshes/fw_right_steering_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fw_right_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.2704 -0.15909 0.30734"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fw_right_steering_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1000"
+      upper="1000"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="fw_right_rotation_link">
+    <inertial>
+      <origin
+        xyz="0 -2.77555756156289E-17 0.1016"
+        rpy="0 0 0" />
+      <mass
+        value="3.05027768267112" />
+      <inertia
+        ixx="0.0108033046694065"
+        ixy="6.03686028394455E-19"
+        ixz="-7.43090100372439E-21"
+        iyy="0.0108033046694065"
+        iyz="1.43882798900578E-19"
+        izz="0.0131744580072803" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+        filename="package://chromebot_description/meshes/fw_right_rotation_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+        filename="package://chromebot_description/meshes/fw_right_rotation_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fw_right_rotation_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.10129 -0.20581"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="fw_right_steering_link" />
+    <child
+      link="fw_right_rotation_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="fw_left_steering_link">
+    <inertial>
+      <origin
+        xyz="-1.11022302462516E-16 -2.77555756156289E-17 -0.0828816343189805"
+        rpy="0 0 0" />
+      <mass
+        value="0.745023850143022" />
+      <inertia
+        ixx="0.0049588205531362"
+        ixy="-2.98149360894103E-19"
+        ixz="-5.71520797820409E-19"
+        iyy="0.00288833591537792"
+        iyz="-3.37851186544243E-18"
+        izz="0.00453110133047276" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/fw_left_steering_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/fw_left_steering_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fw_left_steering_joint"
+    type="revolute">
+    <origin
+      xyz="0.2704 0.15909 0.30734"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="fw_left_steering_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1000"
+      upper="1000"
+      effort="10"
+      velocity="100" />
+  </joint>
+  <link
+    name="fw_left_rotation_link">
+    <inertial>
+      <origin
+        xyz="0 -2.77555756156289E-17 -0.1016"
+        rpy="0 0 0" />
+      <mass
+        value="3.05027768267112" />
+      <inertia
+        ixx="0.0108033046694065"
+        ixy="6.03686028394455E-19"
+        ixz="-7.43090100372439E-21"
+        iyy="0.0108033046694065"
+        iyz="1.89780690869131E-19"
+        izz="0.0131744580072803" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/fw_left_rotation_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/fw_left_rotation_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fw_left_rotation_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.10191 -0.20581"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="fw_left_steering_link" />
+    <child
+      link="fw_left_rotation_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="rw_right_steering_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 -1.66533453693773E-16 -0.0828816343189805"
+        rpy="0 0 0" />
+      <mass
+        value="0.745023850143022" />
+      <inertia
+        ixx="0.00495882055313622"
+        ixy="-1.61504663828365E-18"
+        ixz="-2.20771811969808E-19"
+        iyy="0.00288833591537792"
+        iyz="-1.32084448614388E-17"
+        izz="0.00453110133047278" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_right_steering_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_right_steering_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rw_right_steering_joint"
+    type="fixed">
+    <origin
+      xyz="-0.27039627449316 -0.160138655782535 0.30734"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rw_right_steering_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rw_right_rotation_link">
+    <inertial>
+      <origin
+        xyz="0 -2.77555756156289E-17 0.1016"
+        rpy="0 0 0" />
+      <mass
+        value="3.05027768267112" />
+      <inertia
+        ixx="0.0108033046694065"
+        ixy="6.03686028394455E-19"
+        ixz="-7.43090100372439E-21"
+        iyy="0.0108033046694065"
+        iyz="1.43882798900578E-19"
+        izz="0.0131744580072803" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_right_rotation_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_right_rotation_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rw_right_rotation_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.10129 -0.20581"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="rw_right_steering_link" />
+    <child
+      link="rw_right_rotation_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="rw_left_steering_link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 -8.32667268468867E-17 -0.0828816343189804"
+        rpy="0 0 0" />
+      <mass
+        value="0.745023850143021" />
+      <inertia
+        ixx="0.0049588205531362"
+        ixy="2.22585089925602E-18"
+        ixz="2.11094502116489E-19"
+        iyy="0.00288833591537792"
+        iyz="-4.94136582886681E-18"
+        izz="0.00453110133047276" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_left_steering_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_left_steering_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rw_left_steering_joint"
+    type="fixed">
+    <origin
+      xyz="-0.2704 0.15909 0.30734"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rw_left_steering_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rw_left_rotation_link">
+    <inertial>
+      <origin
+        xyz="0 2.77555756156289E-17 0.1016"
+        rpy="0 0 0" />
+      <mass
+        value="3.05027768267112" />
+      <inertia
+        ixx="0.0108033046694065"
+        ixy="-6.06333006354624E-19"
+        ixz="-4.04357198841387E-21"
+        iyy="0.0108033046694065"
+        iyz="1.89780690869131E-19"
+        izz="0.0131744580072803" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_left_rotation_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chromebot_description/meshes/rw_left_rotation_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rw_left_rotation_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.10191 -0.20581"
+      rpy="-1.5708 0 3.1416" />
+    <parent
+      link="rw_left_steering_link" />
+    <child
+      link="rw_left_rotation_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <transmission name="rw_right_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rw_right_rotation_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rw_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="rw_left_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rw_left_rotation_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rw_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="fw_left_castor_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fw_left_steering_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fw_left_castor_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="fw_right_castor_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fw_right_steering_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fw_right_castor_motor">
+      <mechanicalReduction>1.0</mechanicalReduction>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+<!--   <transmission name="fw_right_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fw_right_rotation_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fw_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="fw_left_motor">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fw_left_rotation_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fw_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission> -->
+
+
+
+</robot>
