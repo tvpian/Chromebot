@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <robot name="chromebot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <gazebo reference="fw_right_rotation_link">
+    <!-- <gazebo reference="fw_right_rotation_link">
         <mu1>0.1</mu1>
         <mu2>0.1</mu2>
         <kp>1000000</kp>
@@ -16,7 +16,7 @@
         <kd>100</kd>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>
-    </gazebo>
+    </gazebo> -->
     <gazebo reference="bw_right_rotation_link">
         <mu1>1000000000000</mu1>
         <mu2>1000000000000</mu2>
@@ -33,6 +33,24 @@
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>
     </gazebo>
+
+    <gazebo reference="fw_right_rotation_link">
+        <mu1>1000000000000</mu1>
+        <mu2>1000000000000</mu2>
+        <kp>1000000000000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+    <gazebo reference="fw_left_rotation_link">
+        <mu1>1000000000000</mu1>
+        <mu2>1000000000000</mu2>
+        <kp>1000000000000</kp>
+        <kd>10</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
 
     <!-- <gazebo reference="fw_right_steering_joint">
         <kp>10</kp>
