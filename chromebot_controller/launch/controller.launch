@@ -29,7 +29,7 @@
         <rosparam file="$(find chromebot_controller)/config/simple_controller.yaml" command="load"/>
         
         <node pkg="controller_manager" type="spawner" name="controller_spawner"
-            respawn="false" output="screen" args="joint_state_controller rw_right_motor rw_left_motor fw_left_castor_motor fw_right_castor_motor"/>
+            respawn="false" output="screen" args="joint_state_controller rw_right_motor rw_left_motor fw_right_motor fw_left_motor"/>
 <!--         
         <node pkg="chromebot_controller" type="simple_controller_node$(arg py_suffix)" name="simple_controller_node"
             respawn="true" output="screen">
