@@ -1,0 +1,25 @@
+# Controller 1
+  rw_right_motor: # change the name
+    type: velocity_controllers/JointVelocityController
+    joint: rw_right_rotation_joint 
+
+# Controller 2
+  rw_left_motor: # change the name
+    type: velocity_controllers/JointVelocityController
+    joint: rw_left_rotation_joint 
+
+# Controller 5
+  fw_left_castor_motor: # change the name
+    type: effort_controllers/JointPositionController
+    joint: fw_left_steering_joint 
+    pid : {p: 10, i: 0.01, d: 3.0}
+
+# Controller 6
+  fw_right_castor_motor: # change the name
+    type: effort_controllers/JointPositionController
+    joint: fw_right_steering_joint 
+    pid : {p: 10, i: 0.01, d: 3.0}
+
+
+
+ 

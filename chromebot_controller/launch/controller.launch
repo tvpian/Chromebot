@@ -1,0 +1,48 @@
+<?xml version="1.0"?>   
+<launch>
+
+    <arg name = "wheel_radius" default = "0.033"/>
+    <arg name = "wheel_separation" default = "0.17"/>
+
+    <arg name="use_python" default="true" />
+    <arg name="py_suffix" value=".py" if="$(arg use_python)"/>  
+    <arg name="py_suffix" value="" unless="$(arg use_python)"/>
+    <arg name="is_simple" default="true" />
+
+
+
+    <rosparam file="$(find joint_state_controller)/joint_state_controller.yaml" command="load"/>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"
+        respawn="false" output="screen"/>
+
+    <!-- <node pkg="controller_manager" type="spawner" name="controller_spawner"
+        respawn="false" output="screen" args="joint_state_controller wheel_left_controller wheel_right_controller"/> -->
+<!-- 
+    <node pkg="bumberbot_controller" type="simple_controller_node$(arg py_suffix)" name="simple_controller_node"
+        respawn="true" output="screen">
+        <param name="wheel_radius" value="$(arg wheel_radius)"/>
+        <param name="wheel_separation" value="$(arg wheel_separation)"/>
+    </node> -->
+
+    <group if="$(arg is_simple)">
+        <rosparam file="$(find chromebot_controller)/config/simple_controller.yaml" command="load"/>
+        
+        <node pkg="controller_manager" type="spawner" name="controller_spawner"
+            respawn="false" output="screen" args="joint_state_controller rw_right_motor rw_left_motor fw_left_castor_motor fw_right_castor_motor"/>
+<!--         
+        <node pkg="chromebot_controller" type="simple_controller_node$(arg py_suffix)" name="simple_controller_node"
+            respawn="true" output="screen">
+            <param name="wheel_radius" value="$(arg wheel_radius)"/>
+            <param name="wheel_separation" value="$(arg wheel_separation)"/>
+        </node>         -->
+    </group>
+
+    <group unless="$(arg is_simple)">
+        <rosparam file="$(find chromebot_controller)/config/diff_drive_controller.yaml" command="load"/>
+
+        <node pkg="controller_manager" type="spawner" name="controller_spawner"
+            respawn="false" output="screen" args="joint_state_controller  bumberbot_controller"/>
+    </group>
+
+</launch>
