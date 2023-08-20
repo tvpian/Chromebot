@@ -18,7 +18,7 @@ class SimpleController():
         rospy.loginfo("Simple Controller Initialized")
         rospy.loginfo("Wheel Seperation: %f, Wheel radius: %f", self.wheel_separation_, self.wheel_radius_)
 
-        self.wheel_radius_ = wheel_radius
+        self.wheel_radius_ = wheel_radius   
         self.wheel_separation_ = wheel_separation
 
         self.left_wheel_prev_pos_ = 0.0
@@ -97,10 +97,10 @@ class SimpleController():
         right_speed = Float64(wheel_velocities[0,0])
         left_speed = Float64(wheel_velocities[1,0])
 
-        self.fw_right_vel_pub_.publish(right_speed/2)
-        self.fw_left_vel_pub_.publish(left_speed/2)
-        self.rw_right_vel_pub_.publish(right_speed/2)
-        self.rw_left_vel_pub_.publish(left_speed/2)
+        self.fw_right_vel_pub_.publish(right_speed)
+        self.fw_left_vel_pub_.publish(left_speed)
+        self.rw_right_vel_pub_.publish(right_speed)
+        self.rw_left_vel_pub_.publish(left_speed)
 
 
     def joint_state_callback(self, msg):
